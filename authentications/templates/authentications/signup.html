@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'authentications/css/signup.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+      {% if messages %}
+         {% for message in messages %}
+            <div class="custom-messagealert" role="alert">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>{{ message }}</span>
+
+                  <button
+                     type="button"
+                     class="btn-close"
+                     data-bs-dismiss="alert"
+                     onclick="this.parentElement.remove()"
+                     aria-label="Close">
+                  </button>
+            </div>
+         {% endfor %}
+      {% endif %}
+   <div class="signup-container">
+      <div class="signup-card">
+         <h1>SignUp Form</h1>
+         <form method="POST">
+
+               {% csrf_token %}
+               {% crispy form%}
+
+               {% comment %} <input type="submit" value="Sign Up"> {% endcomment %}
+         </form>
+      </div>
+   </div>
+
+{% endblock content %}
+

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'authentications/css/edit_profile.css' %}">
+{% endblock extra_css %}
+{% block content %}
+   <div class="edit-profile-page">
+      <div class="edit-profile-card">
+         <div class="edit-header">
+               <div class="edit-icon">
+                  ✏️
+               </div>
+               <h2>Edit Profile</h2>
+               <p>Update your personal information</p>
+         </div>
+         <form method="POST">
+               {% csrf_token %}
+               <div class="form-group">
+                  <label for="username">
+                     Username
+                  </label>
+                  <input
+                     type="text"
+                     id="username"
+                     name="username"
+                     value="{{ user.username }}"
+                     required
+                  >
+               </div>
+               <div class="form-row">
+                  <div class="form-group">
+                     <label for="first_name">
+                           First Name
+                     </label>
+                     <input
+                           type="text"
+                           id="first_name"
+                           name="first_name"
+                           value="{{ user.first_name }}"
+                     >
+                  </div>
+                  <div class="form-group">
+                     <label for="last_name">
+                           Last Name
+                     </label>
+                     <input
+                           type="text"
+                           id="last_name"
+                           name="last_name"
+                           value="{{ user.last_name }}"
+                     >
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label for="email">
+                     Email Address
+                  </label>
+                  <input
+                     type="email"
+                     id="email"
+                     name="email"
+                     value="{{ user.email }}"
+                  >
+               </div>
+               <div class="edit-actions">
+                  <a href="{% url 'profile' %}" class="cancel-btn">
+                     Cancel
+                  </a>
+                  <button type="submit" class="save-btn">
+                     💾 Save Changes
+                  </button>
+               </div>
+         </form>
+      </div>
+   </div>
+{% endblock %}

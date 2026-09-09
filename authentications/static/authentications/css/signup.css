@@ -1,0 +1,344 @@
+/* ================================
+   Signup Page
+================================ */
+
+.signup-container {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+
+    /* Modern background */
+    background:
+        radial-gradient(circle at 10% 20%, rgba(13, 110, 253, 0.12), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(111, 66, 193, 0.12), transparent 30%),
+        #f5f7fb;
+}
+
+
+/* ================================
+   Signup Card
+================================ */
+
+.signup-card {
+    width: 100%;
+    max-width: 680px;
+
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.10),
+        0 5px 15px rgba(0, 0, 0, 0.05);
+
+    backdrop-filter: blur(15px);
+
+    animation: cardAppear 0.7s ease;
+}
+
+
+/* ================================
+   Card Animation
+================================ */
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ================================
+   Heading
+================================ */
+
+.signup-card h1 {
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    font-size: 32px;
+    font-weight: 750;
+
+    letter-spacing: -0.5px;
+
+    color: #1f2937;
+}
+
+
+/* Small line under heading */
+
+.signup-card h1::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+    height: 4px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #0d6efd,
+        #6f42c1
+    );
+}
+
+
+/* ================================
+   Labels
+================================ */
+
+.signup-card label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* ================================
+   Input Fields
+================================ */
+
+.signup-card input.form-control {
+    width: 100%;
+    height: 48px;
+
+    padding: 10px 14px;
+
+    background: #f9fafb;
+
+    border: 1px solid #e2e5e9;
+
+    border-radius: 10px;
+
+    color: #1f2937;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.2s ease;
+}
+
+
+/* Input Hover */
+
+.signup-card input.form-control:hover {
+    border-color: #b9c3d0;
+    background: #ffffff;
+}
+
+
+/* Input Focus */
+
+.signup-card input.form-control:focus {
+    background: #ffffff;
+
+    border-color: #0d6efd;
+
+    box-shadow:
+        0 0 0 4px rgba(13, 110, 253, 0.10),
+        0 5px 15px rgba(13, 110, 253, 0.08);
+
+    transform: translateY(-1px);
+}
+
+
+/* Placeholder */
+
+.signup-card input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* ================================
+   Field Spacing
+================================ */
+
+.signup-card .mb-3 {
+    margin-bottom: 20px !important;
+}
+
+
+/* Password row spacing */
+
+.signup-card .row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.signup-card .row > div {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/* ================================
+   Error Message
+================================ */
+
+.signup-card .text-danger,
+.signup-card .invalid-feedback {
+    margin-top: 6px;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   Submit Button
+================================ */
+
+.signup-card input[type="submit"] {
+    width: 100%;
+    height: 50px;
+
+    margin-top: 12px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #5b3cc4
+    );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 650;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(13, 110, 253, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* Button Hover */
+
+.signup-card input[type="submit"]:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(13, 110, 253, 0.30);
+
+    filter: brightness(1.05);
+}
+
+
+/* Button Click */
+
+.signup-card input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+
+/* ================================
+   Password Help Text
+================================ */
+
+.signup-card ul {
+    margin-top: 8px;
+
+    padding-left: 20px;
+
+    color: #6b7280;
+
+    font-size: 12px;
+}
+
+
+/* ================================
+   Responsive
+================================ */
+
+@media (max-width: 767px) {
+
+    .signup-container {
+        padding: 30px 15px;
+    }
+
+    .signup-card {
+        padding: 30px 22px;
+
+        border-radius: 18px;
+    }
+
+    .signup-card h1 {
+        font-size: 27px;
+
+        margin-bottom: 28px;
+    }
+
+    .signup-card .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .signup-card .row > div {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .signup-card .col-md-6 {
+        width: 100%;
+    }
+}
+
+
+/* ================================
+   Very Small Screen
+================================ */
+
+@media (max-width: 400px) {
+
+    .signup-card {
+        padding: 25px 18px;
+    }
+
+    .signup-card h1 {
+        font-size: 24px;
+    }
+
+    .signup-card input.form-control {
+        height: 46px;
+    }
+
+    .signup-card input[type="submit"] {
+        height: 48px;
+    }
+}

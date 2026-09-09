@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'authentications/css/profile.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+         {% if messages %}
+            {% for message in messages %}
+               <div class="custom-message alert" role="alert">
+                     <i class="bi bi-check-circle-fill"></i>
+                     <span>{{ message }}</span>
+
+                     <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        onclick="this.parentElement.remove()"
+                        aria-label="Close">
+                     </button>
+               </div>
+            {% endfor %}
+         {% endif %}
+   <div class="profile-page">
+      <div class="profile-card">
+         <!-- Profile Header -->
+         <div class="profile-header">
+               <div class="profile-avatar">
+                  {{ user.username|first|upper }}
+               </div>
+               <h2>{{ user.get_full_name|default:user.username }}</h2>
+               <p>@{{ user.username }}</p>
+               <span class="active-status">
+                  <span class="status-dot"></span>
+                  Active
+               </span>
+         </div>
+         <!-- User Information -->
+         <div class="profile-info">
+               <div class="info-item">
+                  <span class="info-label">Username</span>
+                  <strong>{{ user.username }}</strong>
+               </div>
+               <div class="info-item">
+                  <span class="info-label">First Name</span>
+                  <strong>{{ user.first_name|default:"Not provided" }}</strong>
+               </div>
+               <div class="info-item">
+                  <span class="info-label">Last Name</span>
+                  <strong>{{ user.last_name|default:"Not provided" }}</strong>
+               </div>
+               <div class="info-item">
+                  <span class="info-label">Email</span>
+                  <strong>{{ user.email|default:"Not provided" }}</strong>
+               </div>
+               <div class="info-item">
+                  <span class="info-label">Member Since</span>
+                  <strong>{{ user.date_joined|date:"d M, Y" }}</strong>
+               </div>
+         </div>
+         <!-- Buttons -->
+         <div class="profile-actions">
+               <a href="{% url 'edit_profile' %}" class="edit-btn">
+                  ✏️ Edit Profile
+               </a>
+               <a href="{% url 'logout' %}" class="logout-btn">
+                  🚪Logout
+               </a>
+         </div>
+      </div>
+   </div>
+{% endblock %}

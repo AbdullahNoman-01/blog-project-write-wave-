@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_css %}
+{% block content %}
+      {% if messages %}
+         {% for message in messages %}
+            <div class="custom-message alert" role="alert">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>{{ message }}</span>
+
+                  <button
+                     type="button"
+                     class="btn-close"
+                     data-bs-dismiss="alert"
+                     onclick="this.parentElement.remove()"
+                     aria-label="Close">
+                  </button>
+            </div>
+         {% endfor %}
+      {% endif %}
+   <h1>this is home page</h1>
+{% endblock content %}
