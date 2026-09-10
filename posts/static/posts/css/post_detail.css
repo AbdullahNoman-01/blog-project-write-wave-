@@ -1,0 +1,491 @@
+.post-detail-container {
+    max-width: 900px;
+    margin: 110px auto 60px;
+    padding: 0 25px;
+    color: #222;
+}
+
+/* Title */
+
+.post-title {
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #111827;
+}
+
+/* Author */
+
+.post-meta {
+    margin-bottom: 20px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #111827;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.author-info strong {
+    display: block;
+    font-size: 14px;
+}
+
+.author-info small {
+    display: block;
+    color: #777;
+    margin-top: 2px;
+}
+
+/* Short description */
+
+.post-short-description {
+    border-left: 3px solid #555;
+    padding: 8px 18px;
+    margin: 30px 0;
+    color: #666;
+    font-style: italic;
+    font-size: 15px;
+}
+
+/* Image */
+
+.post-image-wrapper {
+    width: 100%;
+    margin: 30px 0;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Content */
+
+.post-content {
+    margin-top: 30px;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #333;
+}
+
+.post-content p {
+    margin-bottom: 22px;
+}
+
+.post-content h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.post-content h3 {
+    margin-top: 30px;
+    font-size: 21px;
+}
+
+/* Tags */
+
+.post-tags-section {
+    margin-top: 55px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+.post-tags-section h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.post-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    background: #f3f4f6;
+    color: #374151;
+
+    padding: 8px 14px;
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.post-tag i {
+    color: #16a34a;
+    font-size: 14px;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .post-detail-container {
+        margin-top: 100px;
+        padding: 0 18px;
+    }
+
+    .post-title {
+        font-size: 30px;
+    }
+
+    .post-content {
+        font-size: 16px;
+    }
+
+    .post-image {
+        max-height: 400px;
+    }
+}
+
+
+/* =========================
+   Comments Section
+========================= */
+
+.comments-section {
+    margin-top: 60px;
+    padding-top: 35px;
+    border-top: 1px solid #ddd;
+}
+
+
+/* Header */
+
+.comments-header h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 25px;
+}
+
+.comments-header h2 span {
+    font-size: 14px;
+    background: #111827;
+    color: white;
+    padding: 4px 9px;
+    border-radius: 20px;
+    margin-left: 6px;
+}
+
+
+/* Comment Form */
+
+.comment-form-box {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 35px;
+}
+
+
+/* User */
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.comment-user strong {
+    display: block;
+    font-size: 14px;
+}
+
+.comment-user small {
+    display: block;
+    color: #777;
+    font-size: 12px;
+}
+
+
+/* Avatar */
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+
+    border-radius: 50%;
+
+    background: #111827;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+}
+
+
+/* Textarea */
+
+.comment-form-box textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    padding: 12px 14px;
+
+    font-size: 14px;
+    resize: vertical;
+
+    outline: none;
+}
+
+.comment-form-box textarea:focus {
+    border-color: #111827;
+    box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.08);
+}
+
+
+/* Submit */
+
+.comment-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.comment-submit button {
+    border: none;
+
+    background: #111827;
+    color: white;
+
+    padding: 9px 17px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.comment-submit button:hover {
+    background: #000;
+    transform: translateY(-1px);
+}
+
+
+/* Comment List */
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* Individual Comment */
+
+.comment-item {
+    display: flex;
+    gap: 12px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+.comment-body {
+    flex: 1;
+}
+
+.comment-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 5px;
+}
+
+.comment-info strong {
+    font-size: 14px;
+    color: #111827;
+}
+
+.comment-info small {
+    font-size: 11px;
+    color: #888;
+}
+
+.comment-body p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: #444;
+}
+
+
+/* No Comments */
+
+.no-comments {
+    text-align: center;
+    padding: 35px 20px;
+
+    color: #777;
+}
+
+.no-comments i {
+    font-size: 35px;
+    color: #aaa;
+}
+
+.no-comments p {
+    margin: 10px 0 3px;
+
+    font-weight: 600;
+    color: #555;
+}
+
+.no-comments small {
+    font-size: 13px;
+}
+
+
+/* Login */
+
+.login-comment-box {
+    text-align: center;
+
+    padding: 25px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    margin-bottom: 30px;
+}
+
+.login-comment-box i {
+    font-size: 28px;
+    color: #555;
+}
+
+.login-comment-box p {
+    margin: 8px 0 12px;
+    color: #555;
+}
+
+.login-comment-box a {
+    display: inline-block;
+
+    background: #111827;
+    color: white;
+
+    padding: 8px 18px;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ========================================
+   Back Button
+======================================== */
+
+.back-button-wrapper {
+    margin-bottom: 25px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    background: #f1f3f7;
+    color: #344054;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.back-button i {
+    font-size: 16px;
+
+    transition: transform 0.25s ease;
+}
+
+.back-button:hover {
+    color: #172033;
+    background: #e5e9f0;
+
+    transform: translateX(-3px);
+
+    box-shadow:
+        0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.back-button:hover i {
+    transform: translateX(-3px);
+}
+
+.back-button:active {
+    transform: translateX(-1px) scale(0.98);
+}
+
+
+/* ========================================
+   Mobile
+======================================== */
+
+@media (max-width: 576px) {
+
+    .back-button-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .back-button {
+        padding: 9px 15px;
+
+        font-size: 13px;
+    }
+
+}

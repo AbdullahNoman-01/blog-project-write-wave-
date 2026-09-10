@@ -3,72 +3,390 @@
 
 
 {% block extra_css %}
-   <link rel="stylesheet" href="{% static 'authentications/css/profile.css' %}">
+<link rel="stylesheet"
+      href="{% static 'authentications/css/profile.css' %}">
 {% endblock extra_css %}
 
-{% block content %}
-         {% if messages %}
-            {% for message in messages %}
-               <div class="custom-message alert" role="alert">
-                     <i class="bi bi-check-circle-fill"></i>
-                     <span>{{ message }}</span>
 
-                     <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        onclick="this.parentElement.remove()"
-                        aria-label="Close">
-                     </button>
-               </div>
-            {% endfor %}
-         {% endif %}
-   <div class="profile-page">
-      <div class="profile-card">
-         <!-- Profile Header -->
-         <div class="profile-header">
-               <div class="profile-avatar">
-                  {{ user.username|first|upper }}
-               </div>
-               <h2>{{ user.get_full_name|default:user.username }}</h2>
-               <p>@{{ user.username }}</p>
-               <span class="active-status">
-                  <span class="status-dot"></span>
-                  Active
-               </span>
-         </div>
-         <!-- User Information -->
-         <div class="profile-info">
-               <div class="info-item">
-                  <span class="info-label">Username</span>
-                  <strong>{{ user.username }}</strong>
-               </div>
-               <div class="info-item">
-                  <span class="info-label">First Name</span>
-                  <strong>{{ user.first_name|default:"Not provided" }}</strong>
-               </div>
-               <div class="info-item">
-                  <span class="info-label">Last Name</span>
-                  <strong>{{ user.last_name|default:"Not provided" }}</strong>
-               </div>
-               <div class="info-item">
-                  <span class="info-label">Email</span>
-                  <strong>{{ user.email|default:"Not provided" }}</strong>
-               </div>
-               <div class="info-item">
-                  <span class="info-label">Member Since</span>
-                  <strong>{{ user.date_joined|date:"d M, Y" }}</strong>
-               </div>
-         </div>
-         <!-- Buttons -->
-         <div class="profile-actions">
-               <a href="{% url 'edit_profile' %}" class="edit-btn">
-                  ✏️ Edit Profile
-               </a>
-               <a href="{% url 'logout' %}" class="logout-btn">
-                  🚪Logout
-               </a>
-         </div>
-      </div>
-   </div>
+{% block content %}
+
+<!-- ========================================
+     Success / Error Messages
+======================================== -->
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="custom-message alert" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>{{ message }}</span>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                onclick="this.parentElement.remove()"
+                aria-label="Close">
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+<!-- =======================================
+     Profile Page
+======================================== -->
+
+<div class="profile-page">
+    <div class="profile-card">
+        <div class="profile-header">
+            <!-- Avatar -->
+            <div class="profile-avatar">
+                {{ user.username|first|upper }}
+            </div>
+            <!-- Name -->
+            <h2>
+                {{ user.get_full_name|default:user.username }}
+            </h2>
+
+
+            <!-- Username -->
+
+            <p>
+                @{{ user.username }}
+            </p>
+
+
+            <!-- Active Status -->
+
+            <span class="active-status">
+
+                <span class="status-dot"></span>
+
+                Active
+
+            </span>
+
+        </div>
+
+
+
+        <!-- ========================================
+             User Information
+        ======================================== -->
+
+        <div class="profile-info">
+
+            <!-- Username -->
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Username
+                </span>
+
+                <strong>
+                    {{ user.username }}
+                </strong>
+
+            </div>
+
+
+            <!-- First Name -->
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    First Name
+                </span>
+
+                <strong>
+                    {{ user.first_name|default:"Not provided" }}
+                </strong>
+
+            </div>
+
+
+            <!-- Last Name -->
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Last Name
+                </span>
+
+                <strong>
+                    {{ user.last_name|default:"Not provided" }}
+                </strong>
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Email
+                </span>
+
+                <strong>
+                    {{ user.email|default:"Not provided" }}
+                </strong>
+
+            </div>
+
+
+            <!-- Member Since -->
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Member Since
+                </span>
+
+                <strong>
+                    {{ user.date_joined|date:"d M, Y" }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================
+             My Posts
+        ======================================== -->
+
+        <div class="my-posts-section">
+
+
+            <!-- My Posts Header -->
+
+            <div class="my-posts-header">
+
+                <div>
+
+                    <h3>
+                        📝 My Posts
+                    </h3>
+
+                    <p>
+                        All the stories you have shared.
+                    </p>
+
+                </div>
+
+
+                <span class="post-count">
+
+                    {{ user_posts.count }}
+
+                    {% if user_posts.count == 1 %}
+                        Post
+                    {% else %}
+                        Posts
+                    {% endif %}
+
+                </span>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 Posts List
+            ======================================== -->
+
+            <div class="my-posts-list">
+
+
+                {% for post in user_posts %}
+
+
+                    <!-- Single Post -->
+
+                    <div class="my-post-item">
+
+
+                        <!-- Post Image -->
+
+                        {% if post.image %}
+
+                            <div class="my-post-image">
+
+                                <img
+                                    src="{{ post.image.url }}"
+                                    alt="{{ post.title }}"
+                                >
+
+                            </div>
+
+                        {% else %}
+
+                            <div class="my-post-image no-image">
+
+                                <i class="bi bi-image"></i>
+
+                            </div>
+
+                        {% endif %}
+
+
+
+                        <!-- Post Content -->
+
+                        <div class="my-post-content">
+
+
+                            <!-- Title -->
+
+                            <h4>
+                                {{ post.title }}
+                            </h4>
+
+
+                            <!-- Short Description -->
+
+                            {% if post.short_description %}
+
+                                <p>
+                                    {{ post.short_description|truncatewords:18 }}
+                                </p>
+
+                            {% else %}
+
+                                <p>
+                                    No description available.
+                                </p>
+
+                            {% endif %}
+
+
+
+                            <!-- Post Meta -->
+
+                            <div class="my-post-meta">
+
+
+                                <!-- Date -->
+
+                                <span>
+
+                                    <i class="bi bi-calendar3"></i>
+
+                                    {{ post.created_at|date:"M d, Y" }}
+
+                                </span>
+
+
+
+                                <!-- Read Story -->
+
+                                <a href="{% url 'post_detail' post.pk %}">
+
+                                    Read Story
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                {% empty %}
+
+
+                    <!-- ========================================
+                         No Posts
+                    ======================================== -->
+
+                    <div class="no-posts">
+
+
+                        <div class="no-posts-icon">
+
+                            <i class="bi bi-journal-x"></i>
+
+                        </div>
+
+
+                        <h4>
+                            No Posts Yet
+                        </h4>
+
+
+                        <p>
+                            You haven't shared any stories yet.
+                        </p>
+
+
+                        <a href="{% url 'create_post' %}">
+
+                            <i class="bi bi-pencil-square"></i>
+
+                            Create Your First Post
+
+                        </a>
+
+
+                    </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================
+             Profile Actions
+        ======================================== -->
+
+        <div class="profile-actions">
+
+
+            <!-- Edit Profile -->
+
+            <a
+                href="{% url 'edit_profile' %}"
+                class="edit-btn">
+
+                <i class="bi bi-pencil-square"></i>
+
+                Edit Profile
+
+            </a>
+
+
+
+            <!-- Logout -->
+
+            <a
+                href="{% url 'logout' %}"
+                class="logout-btn">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
 {% endblock %}

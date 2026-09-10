@@ -1,5 +1,8 @@
 from django.shortcuts import render,redirect
+
+from posts.models import Post
 from .import forms
+
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
@@ -59,7 +62,18 @@ def LoginView(request):
 
 @login_required
 def ProfileView(request):
-    return render(request, "authentications/profile.html")
+
+    user_posts = Post.objects.filter(
+        author=request.user
+    ).order_by("-created_at")
+
+    return render(
+        request,
+        "authentications/profile.html",
+        {
+            "user_posts": user_posts,
+        }
+    )
 
 
 @login_required

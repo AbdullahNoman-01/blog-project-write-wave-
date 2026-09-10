@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'posts/css/post_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+   <div class="post-detail-container">
+      <!-- Back Button -->
+      <div class="back-button-wrapper">
+         <a href="{% url 'home' %}" class="back-button">
+               <i class="bi bi-arrow-left"></i>
+               Back to Home
+         </a>
+      </div>
+      <!-- Title -->
+      <h1 class="post-title">
+         {{ post.title }}
+      </h1>
+      <!-- Author Info -->
+      <div class="post-meta">
+         <div class="author-info">
+               <div class="author-avatar">
+                  {{ post.author.username|first|upper }}
+               </div>
+               <div>
+                  <strong>{{ post.author.username }}</strong>
+                  <small>
+                     {{ post.created_at|date:"M d, Y" }}
+                  </small>
+               </div>
+         </div>
+      </div>
+
+      <hr>
+      <!-- Short Description -->
+      {% if post.short_description %}
+         <div class="post-short-description">
+               {{ post.short_description }}
+         </div>
+      {% endif %}
+      <!-- Main Image -->
+      {% if post.image %}
+         <div class="post-image-wrapper">
+               <img src="{{ post.image.url }}"
+                  alt="{{ post.title }}"
+                  class="post-image">
+         </div>
+      {% endif %}
+      <!-- Story Content -->
+      <article class="post-content">
+         {{ post.content|linebreaks }}
+      </article>
+
+      <!-- Tags -->
+      <!-- Tags -->
+      {% if post.tags.all %}
+         <div class="post-tags-section">
+            <h3>Tags</h3>
+            <div class="post-tags">
+                  {% for tag in post.tags.all %}
+                     <span class="post-tag">
+                        <i class="bi bi-check-circle-fill"></i>
+                        {{ tag.name }}
+                     </span>
+                  {% endfor %}
+            </div>
+         </div>
+      {% endif %}
+   </div>
+
+   <!-- Comments Section -->
+
+   <section class="comments-section">
+
+      <div class="comments-header">
+         <h2>
+               Comments
+               <span>{{ comments.count }}</span>
+         </h2>
+      </div>
+
+      <!-- Comment Form -->
+      {% if user.is_authenticated %}
+         <div class="comment-form-box">
+               <div class="comment-user">
+                  <div class="comment-avatar">
+                     {{ user.username|first|upper }}
+                  </div>
+                  <div>
+                     <strong>{{ user.username }}</strong>
+                     <small>Leave a comment</small>
+                  </div>
+               </div>
+               <form method="POST">
+                  {% csrf_token %}
+                  {{ comment_form.text }}
+                  <div class="comment-submit">
+                     <button type="submit">
+                           <i class="bi bi-send-fill"></i>
+                           Post Comment
+                     </button>
+                  </div>
+               </form>
+         </div>
+      {% else %}
+         <div class="login-comment-box">
+               <i class="bi bi-chat-left-text"></i>
+               <p>
+                  Please login to leave a comment.
+               </p>
+               <a href="{% url 'login' %}">
+                  Login
+               </a>
+         </div>
+      {% endif %}
+
+      <!-- Existing Comments -->
+      <div class="comments-list">
+         {% for comment in comments %}
+               <div class="comment-item">
+                  <div class="comment-avatar">
+                     {{ comment.user.username|first|upper }}
+                  </div>
+                  <div class="comment-body">
+                     <div class="comment-info">
+                           <strong>
+                              {{ comment.user.username }}
+                           </strong>
+                           <small>
+                              {{ comment.created_at|date:"M d, Y • h:i A" }}
+                           </small>
+                     </div>
+                     <p>
+                           {{ comment.text }}
+                     </p>
+                  </div>
+               </div>
+         {% empty %}
+               <div class="no-comments">
+                  <i class="bi bi-chat-square-text"></i>
+                  <p>
+                     No comments yet.
+                  </p>
+                  <small>
+                     Be the first one to share your thoughts.
+                  </small>
+               </div>
+         {% endfor %}
+      </div>
+   </section>
+
+{% endblock %}

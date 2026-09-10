@@ -21,5 +21,264 @@
             </div>
          {% endfor %}
       {% endif %}
-   <h1>this is home page</h1>
+   
+      <div class="home-container">
+
+         <!-- ================= MAIN CONTENT ================= -->
+         <main class="main-feed">
+            <!-- Tabs -->
+            <div class="feed-tabs">
+                  <button class="tab active">For you</button>
+                  <button class="tab">Featured</button>
+            </div>
+            <!-- ================= ARTICLE ================= -->
+            {% for post in posts %}
+               <article class="post-card">
+                     <div class="post-content">
+                        <div class="post-meta">
+                           <div class="publication-icon">{{ post.author.username|first|upper }}</div>
+                           <span>My Blog</span>
+                           <span>by</span>
+                           <span class="author">{{ post.author.first_name }} {{ post.author.last_name }}</span>
+                           <span>·</span>
+                           <span>{{ post.created_at|date:"M d, Y" }}</span>
+                        </div>
+                        <h2 class="post-title">
+                           {{ post.title }}
+                        </h2>
+                        <a href="{% url 'post_detail' post.id %}" class="post-description">
+                           {{ post.content|truncatewords:30 }}
+                        </a>
+                        <div class="post-footer">
+                           <div class="post-stats">
+                                 <span class="clap"></span>
+                                 <span>{{ post.like_count }} likes</span>
+                                 <span class="comment-icon">●</span>
+                                 <span>618</span>
+                                 <span>↗</span>
+                                 <span>224</span>
+                           </div>
+                           <div class="post-actions">
+                              <form action="{% url 'like_post' post.pk %}" method="POST">
+                                 {% csrf_token %}
+                                 <button type="submit" class="like-btn">
+                                    {% if post.is_liked %}
+                                          <i class="fa-solid fa-heart liked"></i>
+                                    {% else %}
+                                          <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
+                                 </button>
+                              </form>
+                                 <button>🔖</button>
+                                 <div class="post-menu-wrapper">
+                                    <button type="button"
+                                             class="menu-btn"
+                                             onclick="toggleMenu('{{ post.pk }}')">
+                                       •••
+                                    </button>
+                                    <div class="post-menu" id="menu-{{ post.pk }}">
+                                       {% if user == post.author %}
+                                             <a href="{% url 'edit_post' post.pk %}">
+                                                ✏️ Edit Story
+                                             </a>
+                                             <a href="{% url 'delete_post' post.pk %}">
+                                                🗑️ Delete Story
+                                             </a>
+                                       {% else %}
+                                             <a href="{% url 'post_detail' post.pk %}">
+                                                📖 Post Description
+                                             </a>
+                                       {% endif %}
+                                    </div>
+                                 </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="post-image">
+                        <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'posts/images/no_image.jpg' %}{% endif %}"
+                              alt="AI Article">
+                     </div>
+               </article>
+            {% endfor %}
+         </main>
+
+
+
+         <!-- ================= SIDEBAR ================= -->
+         <aside class="sidebar">
+
+            <!-- Staff Picks -->
+            <section class="sidebar-section">
+
+                  <h3>Staff Picks</h3>
+
+                  <div class="staff-item">
+
+                     <div class="staff-meta">
+                        <div class="small-avatar">M</div>
+
+                        <span>In Understanding Deaf...</span>
+                        <span>by Mark Drolsba...</span>
+                     </div>
+
+                     <h4>
+                        Deaf People Can’t Opt Out of the Hearing
+                        World (Trust Me, We’ve Tried)
+                     </h4>
+
+                     <p>Aug 19</p>
+
+                  </div>
+
+
+                  <div class="staff-item">
+
+                     <div class="staff-meta">
+                        <div class="small-avatar purple">E</div>
+
+                        <span>In Starts With A Bang!</span>
+                        <span>by Ethan Siegel</span>
+                     </div>
+
+                     <h4>
+                        The sky is blue. The ocean is, too.
+                        But the reasons why are very different.
+                     </h4>
+
+                     <p>Sep 2</p>
+
+                  </div>
+
+
+                  <div class="staff-item">
+
+                     <div class="staff-meta">
+                        <div class="small-avatar colorful">R</div>
+
+                        <span>In The Political Prism</span>
+                        <span>by Richard Leighland</span>
+                     </div>
+
+                     <h4>
+                        Do Americans Want National Socialism?
+                     </h4>
+
+                     <p>Sep 1</p>
+
+                  </div>
+
+                  <a href="#" class="see-more">
+                     See the full list
+                  </a>
+
+            </section>
+
+
+            <!-- Recommended Topics -->
+            <section class="sidebar-section">
+
+                  <h3>Recommended topics</h3>
+
+                  <div class="topics">
+
+                     <button>
+                        Data Science
+                        <span>+</span>
+                     </button>
+
+                     <button>
+                        Self Improvement
+                        <span>+</span>
+                     </button>
+
+                     <button>
+                        Writing
+                        <span>+</span>
+                     </button>
+
+                     <button>
+                        Politics
+                        <span>+</span>
+                     </button>
+
+                     <button>
+                        Cryptocurrency
+                        <span>+</span>
+                     </button>
+
+                     <button>
+                        Productivity
+                        <span>+</span>
+                     </button>
+
+                     <button>
+                        Machine Learning
+                        <span>+</span>
+                     </button>
+
+                  </div>
+
+                  <a href="#" class="see-more">
+                     See more topics
+                  </a>
+
+            </section>
+
+
+            <!-- Who to Follow -->
+            <section class="sidebar-section">
+
+                  <h3>Who to follow</h3>
+
+                  <div class="follow-user">
+
+                     <div class="user-avatar">
+                        D
+                     </div>
+
+                     <div class="user-info">
+                        <h4>Desiree Peralta</h4>
+                        <p>
+                              Turning ideas into reality.
+                              Programmer by...
+                        </p>
+                     </div>
+
+                     <button class="follow-btn">
+                        Follow
+                     </button>
+
+                  </div>
+
+
+                  <div class="follow-user">
+
+                     <div class="user-avatar orange">
+                        B
+                     </div>
+
+                     <div class="user-info">
+                        <h4>Bitchy</h4>
+                        <p>Publication</p>
+                     </div>
+
+                     <button class="follow-btn">
+                        Follow
+                     </button>
+
+                  </div>
+
+            </section>
+
+         </aside>
+
+      </div>
+
+
+      {% block extra_js %}
+         <script src="/static/js/home.js"></script>
+      {% endblock extra_js %}
 {% endblock content %}
+
+
+
