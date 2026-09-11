@@ -28,3 +28,23 @@ function toggleComments(postId) {
         commentsSection.style.display = "none";
     }
 }
+
+
+
+
+const seeMoreTopics = document.getElementById("seeMoreTopics");
+const extraTopics = document.querySelectorAll(".extra-topic");
+if (seeMoreTopics) {
+    seeMoreTopics.addEventListener("click", function () {
+        const isHidden = extraTopics[0].style.display === "" ||
+                            extraTopics[0].style.display === "none";
+
+        extraTopics.forEach(topic => {
+            topic.style.display = isHidden ? "flex" : "none";
+        });
+        this.textContent = isHidden
+            ? "Show less"
+            : "See more topics";
+    });
+}
+

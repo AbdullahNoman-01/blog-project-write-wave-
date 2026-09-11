@@ -184,52 +184,23 @@
 
             <!-- Recommended Topics -->
             <section class="sidebar-section">
-
-                  <h3>Recommended topics</h3>
-
-                  <div class="topics">
-
-                     <button>
-                        Data Science
-                        <span>+</span>
-                     </button>
-
-                     <button>
-                        Self Improvement
-                        <span>+</span>
-                     </button>
-
-                     <button>
-                        Writing
-                        <span>+</span>
-                     </button>
-
-                     <button>
-                        Politics
-                        <span>+</span>
-                     </button>
-
-                     <button>
-                        Cryptocurrency
-                        <span>+</span>
-                     </button>
-
-                     <button>
-                        Productivity
-                        <span>+</span>
-                     </button>
-
-                     <button>
-                        Machine Learning
-                        <span>+</span>
-                     </button>
-
-                  </div>
-
-                  <a href="#" class="see-more">
-                     See more topics
+               <h3>Recommended topics</h3>
+               <div class="topics">
+                  {% for tag in tags %}
+                        <a href="{% url 'posts_by_tag' tag.id %}"
+                           class="topic-button {% if forloop.counter > 3 %}extra-topic{% endif %}">
+                           <span>{{ tag.name }}</span>
+                           <span>+</span>
+                        </a>
+                  {% empty %}
+                        <p>No topics available.</p>
+                  {% endfor %}
+               </div>
+               {% if tags|length > 3 %}
+                  <a href="javascript:void(0)" class="see-more" id="seeMoreTopics">
+                        See more topics
                   </a>
-
+               {% endif %}
             </section>
 
 

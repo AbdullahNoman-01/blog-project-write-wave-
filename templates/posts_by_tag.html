@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    {{ tag.name }} | Write Wave
+{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/posts_by_tag.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+   <div class="tag-posts-page">
+      <!-- Tag Header -->
+      <div class="tag-header">
+         <span class="tag-label">TOPIC</span>
+
+         <h1>{{ tag.name }}</h1>
+
+         <p>
+               Explore all posts related to
+               <strong>{{ tag.name }}</strong>
+         </p>
+      </div>
+
+
+      <!-- Posts -->
+      <div class="tag-posts-container">
+
+         {% for post in posts %}
+
+               <article class="tag-post-card">
+
+                  <div class="tag-post-content">
+
+                     <h2>
+                           {{ post.title }}
+                     </h2>
+
+                     <p class="tag-post-description">
+                           {{ post.content|truncatewords:30 }}
+                     </p>
+
+                     <div class="tag-post-footer">
+
+                           <span class="post-date">
+                              {{ post.created_at|date:"M d, Y" }}
+                           </span>
+
+                           <a href="{% url 'post_detail' post.id %}"
+                              class="read-more">
+                              Read more →
+                           </a>
+
+                     </div>
+
+                  </div>
+
+               </article>
+
+         {% empty %}
+
+               <div class="no-posts">
+                  <div class="no-posts-icon">✦</div>
+
+                  <h3>No posts found</h3>
+
+                  <p>
+                     There are no posts available for
+                     "{{ tag.name }}" yet.
+                  </p>
+
+                  <a href="{% url 'home' %}">
+                     ← Back to Home
+                  </a>
+               </div>
+
+         {% endfor %}
+
+      </div>
+
+   </div>
+
+{% endblock content %}

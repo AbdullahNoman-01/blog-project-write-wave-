@@ -403,8 +403,10 @@ body {
 
 .sidebar {
     border-left: 1px solid #eeeeee;
-
+    position: sticky;
+    top: 100px;
     padding-left: 48px;
+    height: fit-content;
 }
 
 
@@ -414,8 +416,12 @@ body {
 
 .sidebar-section {
     padding: 45px 0;
+    margin-left: 20px;
 }
 
+.extra-topic {
+    display: none;
+}
 .sidebar-section:first-child {
     padding-top: 48px;
 }
@@ -1304,4 +1310,30 @@ body {
     .recommendation-card p {
         font-size: 14px;
     }
+}
+
+
+.topic-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 10px 12px;
+
+    color: #333;
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: 0.2s ease;
+}
+
+.topic-button:hover {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+.topic-button span:last-child {
+    font-size: 20px;
 }
