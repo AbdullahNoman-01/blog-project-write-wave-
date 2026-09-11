@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+About Us | Write Wave
+{% endblock title %}
+
+{% block extra_css %} <link rel="stylesheet" href="{% static 'about_us/css/about.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<!-- =========================
+     ABOUT HERO
+========================= -->
+
+<section class="about-hero">
+    <div class="container">
+        <div class="about-hero-content">
+        <span class="about-badge">
+            ✦ ABOUT WRITE WAVE
+        </span>
+
+        <h1>
+            A Place Where
+            <span>Ideas Come Alive.</span>
+        </h1>
+
+        <p>
+            Write Wave is a modern blogging platform where writers
+            can share their ideas, experiences, knowledge, and stories
+            with a growing community of readers.
+        </p>
+
+        <div class="about-hero-buttons">
+            <a href="{% url 'blog' %}" class="about-btn primary-btn">
+                Explore Blogs
+            </a>
+
+            <a href="{% url 'create_post' %}" class="about-btn secondary-btn">
+                Start Writing
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+</section>
+
+<!-- =========================
+     WHO WE ARE
+========================= -->
+
+<section class="who-we-are">
+    <div class="container">
+
+
+    <div class="about-section-heading">
+        <span>WHO WE ARE</span>
+        <h2>Welcome to Write Wave</h2>
+        <p>
+            More than just a blogging platform — we are a space
+            for creativity, knowledge, and meaningful conversations.
+        </p>
+    </div>
+
+    <div class="who-content">
+
+        <div class="who-text">
+            <h3>Share your thoughts. Inspire others.</h3>
+
+            <p>
+                Write Wave was created to make writing and reading
+                online content simple, enjoyable, and engaging.
+                Whether you are an experienced writer or someone
+                sharing your first idea, Write Wave gives you a
+                place to express yourself.
+            </p>
+
+            <p>
+                Readers can discover interesting articles, interact
+                with writers, leave comments, and show appreciation
+                through likes.
+            </p>
+        </div>
+
+        <div class="who-card">
+            <div class="who-icon">
+                ✍️
+            </div>
+
+            <h3>Write & Share</h3>
+
+            <p>
+                Turn your ideas into meaningful stories and
+                share them with the Write Wave community.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =========================
+     OUR MISSION
+========================= -->
+
+<section class="mission-section">
+    <div class="container">
+
+
+    <div class="mission-content">
+
+        <div class="mission-icon">
+            🚀
+        </div>
+
+        <div>
+            <span class="mission-label">OUR MISSION</span>
+
+            <h2>
+                Making Every Voice
+                <span>Worth Reading.</span>
+            </h2>
+
+            <p>
+                Our mission is to create an open and engaging
+                platform where people can express ideas,
+                exchange knowledge, discover new perspectives,
+                and build meaningful connections through writing.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =========================
+     WHAT WE OFFER
+========================= -->
+
+<section class="features-section">
+    <div class="container">
+
+    <div class="about-section-heading">
+        <span>WHAT WE OFFER</span>
+        <h2>Everything You Need to Share</h2>
+        <p>
+            Write Wave brings writers and readers together
+            through simple and useful features.
+        </p>
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Create Posts</h3>
+            <p>
+                Create and publish your own articles,
+                stories, ideas, and experiences.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Explore Blogs</h3>
+            <p>
+                Discover interesting articles and explore
+                different topics from the community.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">❤️</div>
+            <h3>Like & Engage</h3>
+            <p>
+                Show appreciation for great content
+                and interact with your favorite posts.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Comments</h3>
+            <p>
+                Join meaningful discussions by sharing
+                your thoughts through comments.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">🔔</div>
+            <h3>Notifications</h3>
+            <p>
+                Stay updated about interactions and
+                important activities on your account.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">🏷️</div>
+            <h3>Topics & Tags</h3>
+            <p>
+                Find content easily by exploring topics
+                and tags that interest you.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =========================
+     WHY WRITE WAVE
+========================= -->
+
+<section class="why-section">
+    <div class="container">
+
+
+    <div class="why-content">
+
+        <div class="why-heading">
+            <span>WHY WRITE WAVE?</span>
+
+            <h2>
+                Your Ideas Deserve
+                <strong>an Audience.</strong>
+            </h2>
+        </div>
+
+        <div class="why-list">
+
+            <div class="why-item">
+                <span>01</span>
+                <div>
+                    <h3>Simple to Use</h3>
+                    <p>
+                        A clean and user-friendly experience
+                        for both writers and readers.
+                    </p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span>02</span>
+                <div>
+                    <h3>Community Driven</h3>
+                    <p>
+                        Connect with people who enjoy
+                        sharing and discovering ideas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span>03</span>
+                <div>
+                    <h3>Meaningful Interaction</h3>
+                    <p>
+                        Likes, comments, and notifications
+                        make every post more engaging.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     CALL TO ACTION
+========================= -->
+
+<section class="about-cta">
+    <div class="container">
+    <div class="cta-content">
+
+        <span>✦ JOIN WRITE WAVE</span>
+
+        <h2>
+            Have Something
+            <span>Worth Sharing?</span>
+        </h2>
+
+        <p>
+            Start writing today and let your ideas reach
+            people who are ready to read them.
+        </p>
+
+        <a href="{% url 'create_post' %}" class="cta-btn">
+            Start Writing →
+        </a>
+
+    </div>
+
+</div>
+
+
+</section>
+
+{% endblock content %}

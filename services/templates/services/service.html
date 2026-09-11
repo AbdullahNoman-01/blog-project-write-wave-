@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Services | Write Wave
+{% endblock title %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'services/css/service.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<section class="services-page">
+
+
+<!-- ================= HERO ================= -->
+<div class="services-hero">
+
+    <div class="services-badge">
+        <span>✦</span>
+        WRITE WAVE SERVICES
+    </div>
+
+    <h1>
+        Everything You Need
+        <span>To Write & Connect.</span>
+    </h1>
+
+    <p>
+        Write Wave gives you everything you need to publish your ideas,
+        discover meaningful articles and connect with other readers.
+    </p>
+
+</div>
+
+
+<!-- ================= SERVICES ================= -->
+<div class="services-wrapper">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="heading-label">WHAT WE OFFER</span>
+
+            <h2>
+                Explore Our Services
+            </h2>
+        </div>
+
+        <p>
+            Simple and useful features designed to make
+            your writing and reading experience better.
+        </p>
+
+    </div>
+
+
+    <div class="services-grid">
+
+
+        <!-- 01 CREATE -->
+        <article class="service-card">
+
+            <div class="card-top">
+
+                <div class="service-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+
+                <span class="service-number">
+                    01
+                </span>
+
+            </div>
+
+            <div class="service-body">
+
+                <h3>
+                    Create & Publish
+                </h3>
+
+                <p>
+                    Turn your ideas into beautiful articles and
+                    share your knowledge with the Write Wave community.
+                </p>
+
+                <a href="{% url 'create_post' %}" class="service-link">
+                    Start Writing
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- 02 READ -->
+        <article class="service-card">
+
+            <div class="card-top">
+
+                <div class="service-icon">
+                    <i class="bi bi-book"></i>
+                </div>
+
+                <span class="service-number">
+                    02
+                </span>
+
+            </div>
+
+            <div class="service-body">
+
+                <h3>
+                    Read Articles
+                </h3>
+
+                <p>
+                    Explore informative stories, tutorials and
+                    ideas shared by writers from different backgrounds.
+                </p>
+
+                <a href="{% url 'blog' %}" class="service-link">
+                    Explore Articles
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- 03 LIKE -->
+        <article class="service-card">
+
+            <div class="card-top">
+
+                <div class="service-icon">
+                    <i class="bi bi-heart"></i>
+                </div>
+
+                <span class="service-number">
+                    03
+                </span>
+
+            </div>
+
+            <div class="service-body">
+
+                <h3>
+                    Like & Engage
+                </h3>
+
+                <p>
+                    Show appreciation for great content by liking
+                    articles you enjoy and engaging with the community.
+                </p>
+
+                <a href="{% url 'home' %}" class="service-link">
+                    Discover Posts
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- 04 COMMENT -->
+        <article class="service-card">
+
+            <div class="card-top">
+
+                <div class="service-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+
+                <span class="service-number">
+                    04
+                </span>
+
+            </div>
+
+            <div class="service-body">
+
+                <h3>
+                    Comments
+                </h3>
+
+                <p>
+                    Join the conversation, share your thoughts and
+                    discuss ideas with article authors and readers.
+                </p>
+
+                <a href="{% url 'home' %}" class="service-link">
+                    Join Discussion
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- 05 NOTIFICATION -->
+        <article class="service-card">
+
+            <div class="card-top">
+
+                <div class="service-icon notification-icon">
+                    <i class="bi bi-bell"></i>
+                </div>
+
+                <span class="service-number">
+                    05
+                </span>
+
+            </div>
+
+            <div class="service-body">
+
+                <h3>
+                    Notifications
+                </h3>
+
+                <p>
+                    Stay updated with notifications when someone
+                    interacts with your articles, comments or activity.
+                </p>
+
+                <a href="#" class="service-link">
+                    Stay Updated
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- 06 RECOMMENDATIONS -->
+        <article class="service-card featured-card">
+
+            <div class="featured-label">
+                WRITE WAVE RECOMMENDS
+            </div>
+
+            <div class="card-top">
+
+                <div class="service-icon featured-icon">
+                    <i class="bi bi-star"></i>
+                </div>
+
+                <span class="service-number">
+                    06
+                </span>
+
+            </div>
+
+            <div class="service-body">
+
+                <h3>
+                    Recommendations
+                </h3>
+
+                <p>
+                    Discover useful and carefully selected content
+                    recommended by the Write Wave team.
+                </p>
+
+                <a href="{% url 'home' %}" class="service-link">
+                    View Recommendations
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+
+<!-- ================= CTA ================= -->
+<section class="services-cta">
+
+    <div class="cta-content">
+
+        <span class="cta-label">
+            WRITE. SHARE. CONNECT.
+        </span>
+
+        <h2>
+            Your ideas can
+            <span>start a conversation.</span>
+        </h2>
+
+        <p>
+            Create your first article and become a part
+            of the Write Wave community.
+        </p>
+
+        <a href="{% url 'create_post' %}" class="cta-button">
+            Start Writing
+            <i class="bi bi-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+</section>
+
+{% endblock content %}

@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Contact | Write Wave
+{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'contact/css/contact.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+
+<section class="contact-section">
+
+    <div class="contact-container">
+
+        <!-- Header -->
+        <div class="contact-header">
+            <span class="contact-label">
+                GET IN TOUCH
+            </span>
+
+            <h1>
+                Let's Start a <span>Conversation</span>
+            </h1>
+
+            <p>
+                Have a question, suggestion, or just want to say hello?
+                We'd love to hear from you.
+            </p>
+        </div>
+
+
+        <!-- Contact Content -->
+        <div class="contact-wrapper">
+
+            <!-- Left Side -->
+            <div class="contact-info">
+
+                <div class="info-heading">
+                    <span>✦</span>
+                    <h2>Contact Information</h2>
+                </div>
+
+                <p class="info-description">
+                    Feel free to reach out to us. Whether you have a question
+                    about Write Wave or want to share your thoughts, we're here
+                    to help.
+                </p>
+
+
+                <!-- Email -->
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+
+                    <div>
+                        <h3>Email</h3>
+                        <p>hello@writewave.com</p>
+                    </div>
+                </div>
+
+
+                <!-- Phone -->
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="bi bi-telephone"></i>
+                    </div>
+
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+880 1234-567890</p>
+                    </div>
+                </div>
+
+
+                <!-- Location -->
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+
+                    <div>
+                        <h3>Location</h3>
+                        <p>Dhaka, Bangladesh</p>
+                    </div>
+                </div>
+
+
+                <!-- Social -->
+                <div class="contact-social">
+                    <h3>Follow Us</h3>
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Twitter">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+
+                        <a href="#" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Right Side -->
+            <div class="contact-form-box">
+
+                <div class="form-heading">
+                    <h2>Send us a Message</h2>
+
+                    <p>
+                        Fill out the form below and we'll get back to you
+                        as soon as possible.
+                    </p>
+                </div>
+
+
+                <!-- Django Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="contact-success-message">
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+
+                <form method="POST" class="contact-form">
+
+                    {% csrf_token %}
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">
+                            Your Name
+                        </label>
+
+                        {{ form.name }}
+
+                        {% if form.name.errors %}
+                            <div class="form-error">
+                                {{ form.name.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}">
+                            Email Address
+                        </label>
+
+                        {{ form.email }}
+
+                        {% if form.email.errors %}
+                            <div class="form-error">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label for="{{ form.subject.id_for_label }}">
+                            Subject
+                        </label>
+
+                        {{ form.subject }}
+
+                        {% if form.subject.errors %}
+                            <div class="form-error">
+                                {{ form.subject.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="{{ form.message.id_for_label }}">
+                            Message
+                        </label>
+
+                        {{ form.message }}
+
+                        {% if form.message.errors %}
+                            <div class="form-error">
+                                {{ form.message.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Submit -->
+                    <button type="submit" class="send-message-btn">
+                        <span>Send Message</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}

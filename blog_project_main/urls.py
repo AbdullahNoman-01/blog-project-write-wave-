@@ -11,6 +11,9 @@ urlpatterns = [
     path('posts/', include('posts.urls')),
     path('recommendations/', include('recommendations.urls')),
     path('blogs/', include('blogs.urls')),
+    path('services/', include('services.urls')),
+    path('contact/', include('contact.urls')),
+    path('about_us/', include('about_us.urls')),
     path('', views.home, name='home'),
     path('tags/<int:tag_id>/', views.posts_by_tag, name='posts_by_tag'),
 ]
