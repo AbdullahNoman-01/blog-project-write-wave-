@@ -28,8 +28,7 @@
          <main class="main-feed">
             <!-- Tabs -->
             <div class="feed-tabs">
-                  <button class="tab active">For you</button>
-                  <button class="tab">Featured</button>
+                  <button class="tab active">Blog</button>
             </div>
             <!-- ================= ARTICLE ================= -->
             {% for post in posts %}
@@ -53,10 +52,12 @@
                            <div class="post-stats">
                                  <span class="clap"></span>
                                  <span>{{ post.like_count }} likes</span>
-                                 <span class="comment-icon">●</span>
-                                 <span>618</span>
-                                 <span>↗</span>
-                                 <span>224</span>
+                                 <!-- Comment -->
+                                 <span class="comment-icon">💬</span>
+                                 <span class="comment-count"
+                                       onclick="toggleComments('{{ post.id }}')">
+                                    {{ post.comments.count }} comments
+                                 </span>
                            </div>
                            <div class="post-actions">
                               <form action="{% url 'like_post' post.pk %}" method="POST">
@@ -69,7 +70,6 @@
                                     {% endif %}
                                  </button>
                               </form>
-                                 <button>🔖</button>
                                  <div class="post-menu-wrapper">
                                     <button type="button"
                                              class="menu-btn"
@@ -99,6 +99,23 @@
                               alt="AI Article">
                      </div>
                </article>
+               <!-- Comments Section -->
+                                 <div id="comments-{{ post.id }}"
+                                    class="comments-section"
+                                    style="display: none;">
+                                    {% for comment in post.comments.all %}
+                                       <div class="comment">
+                                             <strong>
+                                                {{ comment.user.username }}
+                                             </strong>
+                                             <p>
+                                                {{ comment.text }}
+                                             </p>
+                                       </div>
+                                    {% empty %}
+                                       <p>No comments yet.</p>
+                                    {% endfor %}
+                                 </div>
             {% endfor %}
          </main>
 
@@ -107,70 +124,61 @@
          <!-- ================= SIDEBAR ================= -->
          <aside class="sidebar">
 
-            <!-- Staff Picks -->
-            <section class="sidebar-section">
-
-                  <h3>Staff Picks</h3>
-
-                  <div class="staff-item">
-
-                     <div class="staff-meta">
-                        <div class="small-avatar">M</div>
-
-                        <span>In Understanding Deaf...</span>
-                        <span>by Mark Drolsba...</span>
-                     </div>
-
-                     <h4>
-                        Deaf People Can’t Opt Out of the Hearing
-                        World (Trust Me, We’ve Tried)
-                     </h4>
-
-                     <p>Aug 19</p>
-
-                  </div>
-
-
-                  <div class="staff-item">
-
-                     <div class="staff-meta">
-                        <div class="small-avatar purple">E</div>
-
-                        <span>In Starts With A Bang!</span>
-                        <span>by Ethan Siegel</span>
-                     </div>
-
-                     <h4>
-                        The sky is blue. The ocean is, too.
-                        But the reasons why are very different.
-                     </h4>
-
-                     <p>Sep 2</p>
-
-                  </div>
-
-
-                  <div class="staff-item">
-
-                     <div class="staff-meta">
-                        <div class="small-avatar colorful">R</div>
-
-                        <span>In The Political Prism</span>
-                        <span>by Richard Leighland</span>
-                     </div>
-
-                     <h4>
-                        Do Americans Want National Socialism?
-                     </h4>
-
-                     <p>Sep 1</p>
-
-                  </div>
-
-                  <a href="#" class="see-more">
-                     See the full list
-                  </a>
-
+            <!-- recommendations Picks -->
+            <section class="admin-recommendations">
+               <div class="recommendation-heading">
+                  <span class="recommendation-eyebrow">
+                        ✦ WRITE WAVE RECOMMENDS
+                  </span>
+                  <h2>
+                        Helpful Recommendations
+                  </h2>
+                  <p>
+                        Ideas, resources and insights carefully selected
+                        by the Write Wave admin.
+                  </p>
+               </div>
+               <div class="recommendation-list">
+                  {% for recommendation in recommendations %}
+                        <article class="recommendation-card">
+                           {% if recommendation.image %}
+                              <div class="recommendation-image-wrapper">
+                                    <img
+                                       src="{{ recommendation.image.url }}"
+                                       alt="{{ recommendation.title }}"
+                                    >
+                              </div>
+                           {% endif %}
+                           <div class="recommendation-card-content">
+                              <div class="recommendation-meta">
+                                    <span class="admin-badge">
+                                       ✦ Admin Recommendation
+                                    </span>
+                                    <span>
+                                       {{ recommendation.created_at|date:"M d, Y" }}
+                                    </span>
+                              </div>
+                              <h3>
+                                    {{ recommendation.title }}
+                              </h3>
+                              <p>
+                                    {{ recommendation.short_description }}
+                              </p>
+                              <a
+                                    href="{% url 'recommendation_detail' recommendation.pk %}"
+                                    class="read-recommendation"
+                              >
+                                    Read Recommendation
+                                    <span>→</span>
+                              </a>
+                           </div>
+                        </article>
+                  {% empty %}
+                        <p>
+                           No recommendations available right now.
+                        </p>
+                  {% endfor %}
+               </div>
             </section>
 
 
@@ -224,51 +232,6 @@
 
             </section>
 
-
-            <!-- Who to Follow -->
-            <section class="sidebar-section">
-
-                  <h3>Who to follow</h3>
-
-                  <div class="follow-user">
-
-                     <div class="user-avatar">
-                        D
-                     </div>
-
-                     <div class="user-info">
-                        <h4>Desiree Peralta</h4>
-                        <p>
-                              Turning ideas into reality.
-                              Programmer by...
-                        </p>
-                     </div>
-
-                     <button class="follow-btn">
-                        Follow
-                     </button>
-
-                  </div>
-
-
-                  <div class="follow-user">
-
-                     <div class="user-avatar orange">
-                        B
-                     </div>
-
-                     <div class="user-info">
-                        <h4>Bitchy</h4>
-                        <p>Publication</p>
-                     </div>
-
-                     <button class="follow-btn">
-                        Follow
-                     </button>
-
-                  </div>
-
-            </section>
 
          </aside>
 

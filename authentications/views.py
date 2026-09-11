@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 
-from posts.models import Post
+from posts.models import Notification, Post
 from .import forms
 
 from django.contrib import messages
@@ -44,7 +44,7 @@ def LoginView(request):
                   "Login Successfully"
                )
                return redirect("home")
-         else:
+      else:
                messages.error(
                   request,
                   "Invalid username or password"
@@ -67,11 +67,17 @@ def ProfileView(request):
         author=request.user
     ).order_by("-created_at")
 
+    unread_count = Notification.objects.filter(
+        recipient=request.user,
+        is_read=False
+    ).count()
+
     return render(
         request,
         "authentications/profile.html",
         {
             "user_posts": user_posts,
+            "unread_count": unread_count,
         }
     )
 

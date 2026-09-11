@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'authentications',
     'posts',
+    'recommendations',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -117,6 +118,8 @@ USE_I18N = True
 USE_TZ = True
 
 
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "home"
 # Static files (CSS, JavaScript, Images)
 
 MEDIA_URL = "/media/"

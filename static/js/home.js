@@ -15,3 +15,16 @@ document.addEventListener("click", function (event) {
         });
     }
 });
+
+
+
+function toggleComments(postId) {
+    const commentsSection = document.getElementById(
+        `comments-${postId}`
+    );
+    if (commentsSection.style.display === "none") {
+        commentsSection.style.display = "block";
+    } else {
+        commentsSection.style.display = "none";
+    }
+}

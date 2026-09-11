@@ -820,3 +820,488 @@ body {
     color: inherit;
     text-decoration: none;
 }
+
+
+/* ===============================
+   FACEBOOK STYLE COMMENTS
+================================ */
+
+.comment-count {
+    cursor: pointer;
+    color: #65676b;
+    transition: color 0.2s ease;
+}
+
+.comment-count:hover {
+    text-decoration: underline;
+}
+
+
+/* Comment section */
+
+.comments-section {
+    display: none;
+    width: 100%;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e4e6eb;
+}
+
+
+/* Single comment */
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 80%;
+    margin-bottom: 10px;
+    padding: 9px 13px;
+    background: #f0f2f5;
+    border-radius: 18px;
+}
+
+
+/* Username */
+
+.comment strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: #050505;
+    margin-bottom: 2px;
+}
+
+
+/* Comment text */
+
+.comment p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #050505;
+}
+
+
+/* Last comment */
+
+.comment:last-child {
+    margin-bottom: 0;
+}
+
+
+/* No comments */
+
+.comments-section > p {
+    margin: 8px 0;
+    color: #65676b;
+    font-size: 14px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .comment {
+        max-width: 90%;
+        padding: 8px 12px;
+    }
+
+    .comment strong {
+        font-size: 12px;
+    }
+
+    .comment p {
+        font-size: 13px;
+    }
+
+}
+
+
+
+/* =========================================
+   ADMIN RECOMMENDATIONS
+========================================= */
+
+.admin-recommendations {
+    width: 100%;
+    max-width: 900px;
+    margin: 70px auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.recommendation-heading {
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 35px;
+}
+
+.recommendation-eyebrow {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #198754;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    line-height: 1.4;
+
+    text-transform: uppercase;
+}
+
+.recommendation-heading h2 {
+    margin: 0 0 12px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 38px !important;
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    color: #171717;
+}
+
+.recommendation-heading p {
+    margin: 0;
+
+    max-width: 560px;
+
+    font-size: 16px;
+    line-height: 1.65;
+
+    color: #777;
+}
+
+
+/* =========================================
+   LIST
+========================================= */
+
+.recommendation-list {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.recommendation-card {
+    width: 150%;
+    min-width: 0;
+
+    display: flex;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    border: 1px solid #e4e4e4;
+    border-radius: 12px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.recommendation-image-wrapper {
+    flex: 0 0 220px;
+
+    width: 220px;
+
+    overflow: hidden;
+
+    background: #f3f3f3;
+}
+
+.recommendation-image-wrapper img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 210px;
+
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+}
+
+.recommendation-card:hover
+.recommendation-image-wrapper img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.recommendation-card-content {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 25px 28px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   META
+========================================= */
+
+.recommendation-meta {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    color: #999;
+
+    font-size: 12px;
+}
+
+.admin-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 50px;
+
+    background: #eaf6f0;
+
+    color: #198754;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.recommendation-card h3 {
+    margin: 0 0 10px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 27px !important;
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    color: #171717;
+}
+
+.recommendation-card:hover h3 {
+    color: #198754;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.recommendation-card p {
+    margin: 0 0 17px;
+
+    max-width: 580px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   READ LINK
+========================================= */
+
+.read-recommendation {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #198754;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: gap 0.2s ease;
+}
+
+.read-recommendation span {
+    font-size: 17px;
+
+    transition: transform 0.2s ease;
+}
+
+.read-recommendation:hover {
+    color: #146c43;
+
+    gap: 10px;
+}
+
+.read-recommendation:hover span {
+    transform: translateX(2px);
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.no-recommendation {
+    width: 100%;
+
+    padding: 35px 20px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    border: 1px dashed #d8d8d8;
+
+    border-radius: 12px;
+
+    background: #fafafa;
+}
+
+.no-recommendation p {
+    margin: 0;
+
+    color: #888;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 750px) {
+
+    .admin-recommendations {
+        max-width: 100%;
+
+        margin: 55px auto;
+
+        padding: 0 20px;
+    }
+
+    .recommendation-heading h2 {
+        font-size: 34px !important;
+    }
+
+    .recommendation-card-content {
+        padding: 22px;
+    }
+
+    .recommendation-image-wrapper {
+        flex: 0 0 190px;
+
+        width: 190px;
+    }
+
+    .recommendation-card h3 {
+        font-size: 24px !important;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .admin-recommendations {
+        margin: 45px auto;
+
+        padding: 0 16px;
+    }
+
+    .recommendation-heading {
+        margin-bottom: 28px;
+    }
+
+    .recommendation-heading h2 {
+        font-size: 32px !important;
+
+        line-height: 1.2;
+    }
+
+    .recommendation-heading p {
+        font-size: 15px;
+    }
+
+    .recommendation-card {
+        flex-direction: column;
+    }
+
+    .recommendation-image-wrapper {
+        flex: none;
+
+        width: 100%;
+        height: 200px;
+    }
+
+    .recommendation-image-wrapper img {
+        min-height: 200px;
+    }
+
+    .recommendation-card-content {
+        padding: 21px;
+    }
+
+    .recommendation-card h3 {
+        font-size: 23px !important;
+    }
+
+    .recommendation-card p {
+        font-size: 14px;
+    }
+}

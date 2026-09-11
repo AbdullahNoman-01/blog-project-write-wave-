@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="fw-bold mb-4">
+        🔔 Notifications
+    </h2>
+    {% for notification in notifications %}
+        <div class="card mb-3 border-0 shadow-sm">
+            <div class="card-body">
+                {% if notification.notification_type == "like" %}
+                    ❤️ {{ notification.message }}
+                {% elif notification.notification_type == "comment" %}
+                    💬 {{ notification.message }}
+                {% endif %}
+                <div class="text-muted small mt-2">
+                    {{ notification.created_at|timesince }} ago
+                </div>
+                <a
+                    href="{% url 'post_detail' notification.post.pk %}"
+                    class="btn btn-sm btn-outline-primary mt-2"
+                >
+                    View Post
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="text-center py-5">
+            <h4>No notifications yet 🔕</h4>
+            <p class="text-muted">
+                When someone interacts with your posts,
+                notifications will appear here.
+            </p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

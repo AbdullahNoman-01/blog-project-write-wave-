@@ -1,0 +1,80 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'recommmendations/recommendation_detail.css' %}">
+{% endblock extra_css %}
+
+{% block title %}
+    {{ recommendation.title }} | Write Wave
+{% endblock title %}
+
+{% block content %}
+
+<section class="recommendation-detail-section">
+
+    <div class="recommendation-detail-container">
+
+        <!-- Header -->
+        <div class="recommendation-header">
+
+            <span class="recommendation-label">
+                ✦ ADMIN RECOMMENDATION
+            </span>
+
+            <h1 class="recommendation-title">
+                {{ recommendation.title }}
+            </h1>
+
+            {% if recommendation.short_description %}
+                <p class="recommendation-short-description">
+                    {{ recommendation.short_description }}
+                </p>
+            {% endif %}
+
+            <div class="recommendation-meta">
+                <span class="meta-icon">◷</span>
+                <span>
+                    Published on
+                    {{ recommendation.created_at|date:"M d, Y" }}
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- Image -->
+        {% if recommendation.image %}
+            <div class="recommendation-image-wrapper">
+                <img
+                    src="{{ recommendation.image.url }}"
+                    alt="{{ recommendation.title }}"
+                    class="recommendation-image"
+                >
+            </div>
+        {% endif %}
+
+
+        <!-- Content -->
+        <article class="recommendation-content">
+            {{ recommendation.content|linebreaks }}
+        </article>
+
+
+        <!-- Footer -->
+        <div class="recommendation-footer">
+
+            <a href="{% url 'home' %}" class="back-home">
+                <span>←</span>
+                Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}
+

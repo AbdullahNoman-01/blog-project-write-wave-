@@ -4,7 +4,7 @@ from posts.forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
 
-from posts.models import Like, Post
+from posts.models import Like, Notification, Post
 
 # Create your views here.
 @login_required
@@ -29,9 +29,18 @@ def like_post(request, pk):
         user=request.user,
         post=post
     )
-    if not created:
+    if created:
+        if post.author != request.user:
+            Notification.objects.create(
+                recipient=post.author,
+                sender=request.user,
+                post=post,
+                notification_type="like",
+                message=f"{request.user.username} liked your post."
+            )
+    else:
         like.delete()
-    return redirect("home")
+    return redirect(request.META.get("HTTP_REFERER", "home"))
 
 
 @login_required
@@ -78,6 +87,15 @@ def post_detail(request, pk):
             comment.post = post
             comment.user = request.user
             comment.save()
+            # Create notification
+            if post.author != request.user:
+                Notification.objects.create(
+                    recipient=post.author,
+                    sender=request.user,
+                    post=post,
+                    notification_type="comment",
+                    message=f"{request.user.username} commented on your post."
+                )
             return redirect("post_detail", pk=post.pk)
     else:
         comment_form = CommentForm()
@@ -90,3 +108,20 @@ def post_detail(request, pk):
             "comment_form": comment_form,
         }
     )
+
+
+
+@login_required
+def Notifications(request):
+    notifications = Notification.objects.filter(
+        recipient=request.user
+    ).order_by("-created_at")
+    return render(
+        request,
+        "posts/notification_post.html",
+        {
+            "notifications": notifications
+        }
+    )
+
+

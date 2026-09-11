@@ -7,4 +7,5 @@ urlpatterns = [
    path('edit-post/<int:pk>/', views.Edit_Post, name='edit_post'),
    path('delete-post/<int:pk>/', views.delete_post, name='delete_post'),
    path('post-detail/<int:pk>/', views.post_detail, name='post_detail'),
+   path('notifications/', views.Notifications, name='notifications'),
 ]
