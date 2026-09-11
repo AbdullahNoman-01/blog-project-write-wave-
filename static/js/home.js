@@ -48,3 +48,14 @@ if (seeMoreTopics) {
     });
 }
 
+
+
+
+
+
+function closeLoginNotice() {
+    const notice = document.getElementById("loginNotice");
+    if (notice) {
+        notice.style.display = "none";
+    }
+}

@@ -21,6 +21,44 @@
             </div>
          {% endfor %}
       {% endif %}
+
+ 
+      {% if not user.is_authenticated %}
+         <!-- Login Notice -->
+         <div class="login-notice" id="loginNotice">
+
+            <div class="login-notice-icon">
+                  <i class="bi bi-info-circle-fill"></i>
+            </div>
+
+            <div class="login-notice-content">
+                  <h5>Want to create a post?</h5>
+
+                  <p>
+                     You need to login first to create and publish your own posts.
+                  </p>
+            </div>
+
+            <div class="login-notice-action">
+                  <a href="{% url 'login' %}" class="login-notice-btn">
+                     <i class="bi bi-box-arrow-in-right"></i>
+                     Login
+                  </a>
+            </div>
+
+            <!-- Close Button -->
+            <button
+                  type="button"
+                  class="login-notice-close"
+                  onclick="closeLoginNotice()"
+                  aria-label="Close">
+                  <i class="bi bi-x-lg"></i>
+            </button>
+
+         </div>
+      {% endif %}
+
+
    
       <div class="home-container">
 

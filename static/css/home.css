@@ -1337,3 +1337,184 @@ body {
 .topic-button span:last-child {
     font-size: 20px;
 }
+
+
+/* ================= LOGIN NOTICE ================= */
+
+.login-notice {
+    width: 100%;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 18px 50px 18px 22px;
+    margin-bottom: 24px;
+
+    background: linear-gradient(
+        135deg,
+        #f8fbff,
+        #eef5ff
+    );
+
+    border: 1px solid #d7e6ff;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(30, 80, 150, 0.06);
+}
+
+
+/* Icon */
+
+.login-notice-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: #e4efff;
+    color: #2563eb;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+}
+
+
+/* Content */
+
+.login-notice-content {
+    flex: 1;
+}
+
+.login-notice-content h5 {
+    margin: 0 0 4px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #172033;
+}
+
+.login-notice-content p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #667085;
+}
+
+
+/* Login Button */
+
+.login-notice-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 9px 17px;
+
+    background: #2563eb;
+    color: #fff;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.login-notice-btn:hover {
+    background: #1d4ed8;
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+
+/* ================= CLOSE BUTTON ================= */
+
+.login-notice-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+
+    color: #667085;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: all 0.2s ease;
+}
+
+.login-notice-close:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 576px) {
+
+    .login-notice {
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        padding: 16px 42px 16px 16px;
+
+        gap: 13px;
+    }
+
+    .login-notice-icon {
+        width: 40px;
+        height: 40px;
+
+        font-size: 17px;
+    }
+
+    .login-notice-content {
+        flex: 1;
+        min-width: 180px;
+    }
+
+    .login-notice-content h5 {
+        font-size: 15px;
+    }
+
+    .login-notice-content p {
+        font-size: 13px;
+    }
+
+    .login-notice-action {
+        width: 100%;
+    }
+
+    .login-notice-btn {
+        width: 100%;
+    }
+}
+
