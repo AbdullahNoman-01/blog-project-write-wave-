@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-%ew94d@)ukyg+793tz1(#e4f+49yu-f%@01_1d$v_th=6mh!b!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://blog-project-write-wave.onrender.com",
+]
 
 # Application definition
 
