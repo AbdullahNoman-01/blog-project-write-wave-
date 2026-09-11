@@ -425,19 +425,19 @@ Example:
 
 ### Home Page
 
-![Write Wave Home](screenshots/home.png)
+![Write Wave Home](home.png)
 
 ### Blog Page
 
-![Write Wave Blog](screenshots/blog.png)
+![Write Wave Blog](blog.png)
 
 ### Article Detail
 
-![Article Detail](screenshots/article-detail.png)
+![Article Detail](blog_detail.png)
 
 ### Profile
 
-![Profile](screenshots/profile.png)
+![Profile](profile.png)
 ```
 
 Recommended screenshot folder:
