@@ -10,6 +10,7 @@ urlpatterns = [
     path('auth/', include('authentications.urls')),
     path('posts/', include('posts.urls')),
     path('recommendations/', include('recommendations.urls')),
+    path('blogs/', include('blogs.urls')),
     path('', views.home, name='home'),
     path('tags/<int:tag_id>/', views.posts_by_tag, name='posts_by_tag'),
 ]

@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ post.title }} | Write Wave
+{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'blogs/blog_detail.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+
+<div class="blog-detail-page">
+
+    <!-- Article Header -->
+    <section class="article-header">
+
+        <div class="article-header-inner">
+
+            <!-- Category -->
+            {% if post.category %}
+                <a href="{% url 'blog' %}?category={{ post.category|urlencode }}"
+                   class="article-category">
+                    {{ post.category }}
+                </a>
+            {% endif %}
+
+            <!-- Title -->
+            <h1 class="article-title">
+                {{ post.title }}
+            </h1>
+
+            <!-- Excerpt -->
+            {% if post.excerpt %}
+                <p class="article-excerpt">
+                    {{ post.excerpt }}
+                </p>
+            {% endif %}
+
+            <!-- Meta -->
+            <div class="article-meta">
+
+                <div class="meta-item">
+                    <i class="bi bi-calendar3"></i>
+                    <span>
+                        {{ post.created_at|date:"M d, Y" }}
+                    </span>
+                </div>
+
+                <span class="meta-divider">•</span>
+
+                <div class="meta-item">
+                    <i class="bi bi-eye"></i>
+                    <span>
+                        {{ post.views }} views
+                    </span>
+                </div>
+
+                {% if post.updated_at %}
+                    <span class="meta-divider">•</span>
+
+                    <div class="meta-item">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        <span>
+                            Updated {{ post.updated_at|date:"M d, Y" }}
+                        </span>
+                    </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Article -->
+    <main class="article-wrapper">
+
+        <article class="article-card">
+
+            <!-- Featured Image -->
+            {% if post.featured_image %}
+                <div class="article-image-wrapper">
+
+                    <img
+                        src="{{ post.featured_image.url }}"
+                        alt="{{ post.title }}"
+                        class="article-image"
+                    >
+
+                </div>
+            {% endif %}
+
+
+            <!-- Article Content -->
+            <div class="article-content">
+
+                {{ post.content|linebreaks }}
+
+            </div>
+
+
+            <!-- Bottom -->
+            <div class="article-footer">
+
+                <a href="{% url 'blog' %}" class="back-to-blog">
+                    <i class="bi bi-arrow-left"></i>
+                    Back to Blog
+                </a>
+
+                {% if post.category %}
+                    <a href="{% url 'blog' %}?category={{ post.category|urlencode }}"
+                       class="category-link">
+
+                        <i class="bi bi-folder2-open"></i>
+                        More {{ post.category }} articles
+
+                    </a>
+                {% endif %}
+
+            </div>
+
+        </article>
+
+    </main>
+
+</div>
+
+{% endblock content %}

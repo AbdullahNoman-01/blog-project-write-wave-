@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'authentications',
     'posts',
     'recommendations',
+    'blogs',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'

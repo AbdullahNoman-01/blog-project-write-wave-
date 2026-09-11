@@ -1,0 +1,430 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Blog | Write Wave
+{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'blogs/blog.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<main class="blog-page">
+
+    <!-- ================= HERO ================= -->
+    <section class="blog-hero">
+
+        <div class="blog-hero-content">
+
+            <span class="blog-eyebrow">
+                ✦ WRITE WAVE BLOG
+            </span>
+
+            <h1>
+                Ideas worth <span>sharing.</span>
+            </h1>
+
+            <p>
+                Explore thoughtful stories, programming tips,
+                technology, career advice and ideas from the
+                Write Wave community.
+            </p>
+
+            <!-- Search -->
+            <form class="blog-search" method="GET">
+
+                <i class="bi bi-search"></i>
+
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Search articles..."
+                    value="{{ query }}"
+                >
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TOPICS ================= -->
+    <section class="blog-topics">
+
+        <div class="topics-container">
+
+            <span class="topics-label">
+                Explore topics
+            </span>
+
+            <div class="topics-list">
+
+                <a
+                    href="{% url 'blog' %}"
+                    class="topic {% if not category %}active{% endif %}"
+                >
+                    All
+                </a>
+
+                <a
+                    href="?category=Technology"
+                    class="topic {% if category == 'Technology' %}active{% endif %}"
+                >
+                    Technology
+                </a>
+
+                <a
+                    href="?category=Programming"
+                    class="topic {% if category == 'Programming' %}active{% endif %}"
+                >
+                    Programming
+                </a>
+
+                <a
+                    href="?category=Education"
+                    class="topic {% if category == 'Education' %}active{% endif %}"
+                >
+                    Education
+                </a>
+
+                <a
+                    href="?category=Career"
+                    class="topic {% if category == 'Career' %}active{% endif %}"
+                >
+                    Career
+                </a>
+
+                <a
+                    href="?category=Lifestyle"
+                    class="topic {% if category == 'Lifestyle' %}active{% endif %}"
+                >
+                    Lifestyle
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURED POST ================= -->
+    {% if featured_post %}
+
+    <section class="featured-section">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-eyebrow">
+                        FEATURED
+                    </span>
+
+                    <h2>
+                        Editor's pick
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <article class="featured-card">
+
+                <!-- Image -->
+                <div class="featured-image">
+
+                    {% if featured_post.featured_image %}
+
+                        <img
+                            src="{{ featured_post.featured_image.url }}"
+                            alt="{{ featured_post.title }}"
+                        >
+
+                    {% else %}
+
+                        <div class="image-placeholder">
+                            <i class="bi bi-image"></i>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Content -->
+                <div class="featured-content">
+
+                    <span class="post-category">
+                        {{ featured_post.category }}
+                    </span>
+
+                    <h3>
+                        {{ featured_post.title }}
+                    </h3>
+
+                    <p>
+                        {{ featured_post.excerpt }}
+                    </p>
+
+
+                    <div class="featured-meta">
+
+                        <div class="author-info">
+
+                            <div class="author-avatar">
+                                {{ featured_post.title|first|upper }}
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Write Wave
+                                </strong>
+
+                                <small>
+                                    {{ featured_post.created_at|date:"M d, Y" }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="{% url 'blog_detail' featured_post.slug %}"
+                            class="read-button"
+                        >
+                            Read article
+                            <i class="bi bi-arrow-up-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- ================= LATEST POSTS ================= -->
+    <section class="latest-section">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        LATEST STORIES
+                    </span>
+
+                    <h2>
+                        Fresh from the community
+                    </h2>
+
+                </div>
+
+
+                <span class="article-count">
+                    {{ posts|length }} articles
+                </span>
+
+            </div>
+
+
+
+            <div class="blog-grid">
+
+                {% for post in posts %}
+
+                <article class="blog-card">
+
+                    <!-- Image -->
+                    <a
+                        href="{% url 'blog_detail' post.slug %}"
+                        class="card-image"
+                    >
+
+                        {% if post.featured_image %}
+
+                            <img
+                                src="{{ post.featured_image.url }}"
+                                alt="{{ post.title }}"
+                            >
+
+                        {% else %}
+
+                            <div class="image-placeholder">
+
+                                <i class="bi bi-image"></i>
+
+                            </div>
+
+                        {% endif %}
+
+                    </a>
+
+
+                    <!-- Card Content -->
+                    <div class="card-content">
+
+                        <div class="card-top">
+
+                            <span class="post-category">
+                                {{ post.category }}
+                            </span>
+
+                            <span class="post-date">
+                                {{ post.created_at|date:"M d, Y" }}
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+
+                            <a
+                                href="{% url 'blog_detail' post.slug %}"
+                            >
+                                {{ post.title }}
+                            </a>
+
+                        </h3>
+
+
+                        <p>
+                            {{ post.excerpt|truncatewords:22 }}
+                        </p>
+
+
+                        <div class="card-footer">
+
+                            <span class="reading-info">
+
+                                <i class="bi bi-clock"></i>
+
+                                5 min read
+
+                            </span>
+
+
+                            <a
+                                href="{% url 'blog_detail' post.slug %}"
+                                class="arrow-link"
+                                aria-label="Read article"
+                            >
+
+                                <i class="bi bi-arrow-up-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                {% empty %}
+
+                <!-- No Posts -->
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        <i class="bi bi-journal-text"></i>
+                    </div>
+
+                    <h3>
+                        No articles found
+                    </h3>
+
+                    <p>
+                        We couldn't find any articles matching
+                        your search.
+                    </p>
+
+                    <a
+                        href="{% url 'blog' %}"
+                        class="read-button"
+                    >
+                        View all articles
+                    </a>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= NEWSLETTER ================= -->
+    <section class="newsletter-section">
+
+        <div class="newsletter-container">
+
+            <div class="newsletter-content">
+
+                <span class="section-eyebrow">
+                    STAY IN THE LOOP
+                </span>
+
+                <h2>
+                    Get ideas in your inbox.
+                </h2>
+
+                <p>
+                    Subscribe to receive the latest stories,
+                    tutorials and useful resources from Write Wave.
+                </p>
+
+            </div>
+
+
+            <form
+                class="newsletter-form"
+                method="POST"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your email address"
+                    required
+                >
+
+                <button type="submit">
+                    Subscribe
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock content %}
