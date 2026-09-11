@@ -414,31 +414,24 @@ Django's development workflow makes it straightforward to work with models, view
 
 ---
 
-# 📸 Screenshots
-
-You can add screenshots of the project here.
-
-Example:
-
-```md
 ## 📸 Screenshots
 
-### Home Page
+### 🏠 Home Page
 
-![Write Wave Home](home.png)
+<img src="https://raw.githubusercontent.com/AbdullahNoman-01/blog-project-write-wave-/main/home.png" alt="Write Wave Home" width="100%">
 
-### Blog Page
+### 📝 Blog Page
 
-![Write Wave Blog](blog.png)
+<img src="https://raw.githubusercontent.com/AbdullahNoman-01/blog-project-write-wave-/main/blog.png" alt="Write Wave Blog" width="100%">
 
-### Article Detail
+### 📖 Blog Detail
 
-![Article Detail](blog_detail.png)
+<img src="https://raw.githubusercontent.com/AbdullahNoman-01/blog-project-write-wave-/main/blog_detail.png" alt="Write Wave Blog Detail" width="100%">
 
-### Profile
+### 👤 Profile
 
-![Profile](profile.png)
-```
+<img src="https://raw.githubusercontent.com/AbdullahNoman-01/blog-project-write-wave-/main/profile.png" alt="Write Wave Profile" width="100%">
+
 
 Recommended screenshot folder:
 
