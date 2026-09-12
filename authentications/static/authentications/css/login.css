@@ -117,3 +117,75 @@
     }
 }
 
+
+
+
+/* Signup Option */
+.signup-option {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 14px;
+    color: #7a7f87;
+}
+
+/* Sign Up Link */
+.signup-option a {
+    position: relative;
+
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+/* Animated underline */
+.signup-option a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+
+    width: 0;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #60a5fa
+    );
+
+    border-radius: 10px;
+
+    transition: width 0.3s ease;
+}
+
+.signup-option a:hover {
+    color: #1d4ed8;
+}
+
+.signup-option a:hover::after {
+    width: 100%;
+}
+.signup-option a {
+    position: relative;
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 4px 9px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.signup-option a:hover {
+    background: rgba(37, 99, 235, 0.08);
+    color: #1d4ed8;
+}
+
