@@ -25,3 +25,4 @@ typing_extensions
 tzdata
 urllib3
 gunicorn
+django-debug-toolbar
