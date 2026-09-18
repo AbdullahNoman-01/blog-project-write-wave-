@@ -1,0 +1,71 @@
+<div class="comment-item">
+    <div class="comment-avatar">
+        {{ comment.user.username|first|upper }}
+    </div>
+    <div class="comment-body">
+
+        <div class="comment-info">
+            <strong>{{ comment.user.username }}</strong>
+            <small>
+                {{ comment.created_at|date:"M d, Y • h:i A" }}
+            </small>
+        </div>
+        <p>
+            {{ comment.text }}
+        </p>
+        <!-- Comment Actions -->
+        <div class="comment-actions">
+            {% if user.is_authenticated %}
+                <button
+                    type="button"
+                    onclick="showReplyForm({{ comment.id }})">
+                    <i class="bi bi-reply"></i>
+                    Reply
+                </button>
+            {% endif %}
+            {% if comment.replies.exists %}
+                <button
+                    type="button"
+                    onclick="toggleReplies({{ comment.id }})">
+
+                    <span id="toggle-icon-{{ comment.id }}">
+                        -
+                    </span>
+
+                    Replies
+                </button>
+            {% endif %}
+        </div>
+        <!-- Reply Form -->
+        {% if user.is_authenticated %}
+            <div
+                id="reply-form-{{ comment.id }}"
+                class="reply-form"
+                style="display: none;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input
+                        type="hidden"
+                        name="parent_id"
+                        value="{{ comment.id }}"
+                    >
+                    {{ comment_form.text }}
+                    <button type="submit">
+                        <i class="bi bi-send-fill"></i>
+                        Reply
+                    </button>
+                </form>
+            </div>
+        {% endif %}
+        <!-- Nested Replies -->
+        {% if comment.replies.exists %}
+            <div
+                id="replies-{{ comment.id }}"
+                class="replies-container">
+                {% for reply in comment.replies.all %}
+                    {% include "posts/comment.html" with comment=reply %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>

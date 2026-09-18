@@ -19,13 +19,19 @@ document.addEventListener("click", function (event) {
 
 
 function toggleComments(postId) {
-    const commentsSection = document.getElementById(
-        `comments-${postId}`
+    const comments = document.getElementById(
+        "comments-" + postId
     );
-    if (commentsSection.style.display === "none") {
-        commentsSection.style.display = "block";
+
+    if (!comments) {
+        console.log("Comments section not found:", postId);
+        return;
+    }
+
+    if (comments.style.display === "none") {
+        comments.style.display = "block";
     } else {
-        commentsSection.style.display = "none";
+        comments.style.display = "none";
     }
 }
 
@@ -57,5 +63,27 @@ function closeLoginNotice() {
     const notice = document.getElementById("loginNotice");
     if (notice) {
         notice.style.display = "none";
+    }
+}
+
+
+function toggleReplies(commentId) {
+    const replies = document.getElementById(
+        "replies-" + commentId
+    );
+    const icon = document.getElementById(
+        "reply-icon-" + commentId
+    );
+    if (!replies || !icon) {
+        return;
+    }
+    if (replies.style.display === "none") {
+        replies.style.display = "block";
+        icon.textContent = "↑";
+    } else {
+
+        replies.style.display = "none";
+        icon.textContent = "↓";
+
     }
 }

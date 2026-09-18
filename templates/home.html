@@ -98,6 +98,16 @@
                                  </span>
                            </div>
                            <div class="post-actions">
+                              <a href="{% url 'post_detail' post.pk %}"       class="rating-summary">
+                                 <i class="fa-solid fa-star"></i>
+                                 {% if post.average_rating %}
+                                    {{ post.average_rating|floatformat:1 }}
+                                 {% else %}
+                                    0.0
+                                 {% endif %}
+                                 <small>({{ post.ratings.count }})</small>
+                              </a>
+                              
                               <form action="{% url 'like_post' post.pk %}" method="POST">
                                  {% csrf_token %}
                                  <button type="submit" class="like-btn">
@@ -138,22 +148,59 @@
                      </div>
                </article>
                <!-- Comments Section -->
-                                 <div id="comments-{{ post.id }}"
-                                    class="comments-section"
-                                    style="display: none;">
-                                    {% for comment in post.comments.all %}
-                                       <div class="comment">
-                                             <strong>
-                                                {{ comment.user.username }}
-                                             </strong>
-                                             <p>
-                                                {{ comment.text }}
-                                             </p>
-                                       </div>
-                                    {% empty %}
-                                       <p>No comments yet.</p>
-                                    {% endfor %}
+
+                  <div id="comments-{{ post.id }}"
+                     class="comments-section"
+                     style="display: none;">
+
+                     {% for comment in post.comments.all %}
+
+                        {% if not comment.parent %}
+
+                              <div class="home-comment">
+
+                                 <div class="comment-box">
+
+                                    <strong>
+                                          {{ comment.user.username }}
+                                    </strong>
+
+                                    <p>
+                                          {{ comment.text }}
+                                    </p>
+
+                                    {% if comment.replies.exists %}
+
+                                          <a
+                                             href="{% url 'post_detail' post.pk %}#comment-{{ comment.id }}"
+                                             class="reply-count"
+                                          >
+
+                                             {% if comment.replies.count == 1 %}
+                                                1 reply
+                                             {% else %}
+                                                {{ comment.replies.count }} replies
+                                             {% endif %}
+
+                                          </a>
+
+                                    {% endif %}
+
                                  </div>
+
+                              </div>
+
+                        {% endif %}
+
+                     {% empty %}
+
+                        <p class="no-comments">
+                              No comments yet.
+                        </p>
+
+                     {% endfor %}
+
+                  </div>
             {% endfor %}
          </main>
 

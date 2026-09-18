@@ -1518,3 +1518,88 @@ body {
     }
 }
 
+
+
+.home-comment {
+    margin-bottom: 14px;
+}
+
+.comment-box {
+    display: inline-block;
+    min-width: 160px;
+    max-width: 85%;
+    padding: 14px 16px;
+    background: #f0f2f5;
+    border-radius: 18px;
+}
+
+.comment-box strong {
+    display: block;
+    color: #111;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.comment-box p {
+    margin: 0 0 6px;
+    color: #222;
+    font-size: 15px;
+}
+
+.reply-count {
+    display: inline-block;
+    color: #6f6af8;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.reply-count:hover {
+    text-decoration: underline;
+}
+
+.no-comments {
+    color: #777;
+    font-size: 14px;
+}
+
+/* =========================
+   Rating Summary
+========================= */
+
+.rating-summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    text-decoration: none;
+
+    color: #666;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.rating-summary i {
+    color: #ffc107;
+    font-size: 16px;
+}
+
+.rating-summary small {
+    color: #999;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.rating-summary:hover {
+    color: #6f6af8;
+    transform: translateY(-1px);
+}
+
+.rating-summary:hover i {
+    transform: scale(1.1);
+}

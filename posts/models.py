@@ -56,6 +56,13 @@ class Comment(models.Model):
         User,
         on_delete=models.CASCADE
     )
+    parent = models.ForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="replies"
+    )
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -92,3 +99,30 @@ class Notification(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.message
+
+
+
+class Rating(models.Model):
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name="ratings"
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+    score = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["post", "user"],
+                name="unique_user_post_rating"
+            )
+
+        ]
+
+    def __str__(self):
+        return f"{self.user.username} - {self.post.title} - {self.score}"
